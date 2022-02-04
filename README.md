@@ -22,13 +22,10 @@ The included APKs are:
    * FDroid: a catalogue of FOSS (Free and Open Source Software) applications for the Android platform
    * FDroid Privileged Extension: a FDroid extension to ease the installation/removal of apps
    * additional_repos.xml: a simple package to include the [microG FDroid repository](https://microg.org/fdroid.html) in the ROM (requires FDroid >= 1.5)
- * microG packages (binaries sourced from [here](https://microg.org/download.html) and [here](https://github.com/microg/android_frameworks_mapsv1))
+ * microG packages (binaries sourced from [here](https://microg.org/download.html))
    * GmsCore: the main component of microG, a FOSS reimplementation of the Google Play Services (requires GsfProxy and FakeStore for full functionality)
    * GsfProxy: a GmsCore proxy for legacy GCM compatibility
    * FakeStore: an empty package that mocks the existence of the Google Play Store
-   * com.google.android.maps: legacy microG's mapsv1 reimplementation
 
 These are official unmodified prebuilt binaries, signed by the
-corresponding developers, except for:
- * com.google.android.maps, as the JAR and the XML have been extracted from the ZIP on the [microG's GitHub release page](https://github.com/microg/android_frameworks_mapsv1/releases)
- * additional_repos.xml, to include the microG repository in FDroid
+corresponding developers.
