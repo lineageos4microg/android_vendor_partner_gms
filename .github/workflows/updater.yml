@@ -1,0 +1,24 @@
+name: Updater
+on:
+  schedule:
+    - cron:  '37 13 * * *'
+  workflow_dispatch:
+jobs:
+  Update-Apks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - run: pipx install pipenv
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+          cache: 'pipenv'
+          cache-dependency-path: 'updater/Pipfile.lock'
+      - run: pipenv install
+        working-directory: updater
+      - run: pipenv run python main.py
+        working-directory: updater
