@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <permissions>
     <privapp-permissions package="com.android.vending">
+        <!-- for restrictive signature spoofing, where the permission is "signature|privileged" -->
         <permission name="android.permission.FAKE_PACKAGE_SIGNATURE"/>
     </privapp-permissions>
 </permissions>

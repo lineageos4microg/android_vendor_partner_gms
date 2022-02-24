@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <permissions>
     <privapp-permissions package="com.google.android.gms">
+        <!-- for restrictive signature spoofing, where the permission is "signature|privileged" -->
         <permission name="android.permission.FAKE_PACKAGE_SIGNATURE"/>
+
         <permission name="android.permission.INSTALL_LOCATION_PROVIDER"/>
         <permission name="android.permission.CHANGE_DEVICE_IDLE_TEMP_WHITELIST"/>
         <permission name="android.permission.UPDATE_APP_OPS_STATS"/>
-</privapp-permissions>
+    </privapp-permissions>
 </permissions>
