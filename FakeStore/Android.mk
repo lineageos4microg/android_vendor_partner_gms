@@ -2,7 +2,6 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := privapp-permissions-com.android.vending.xml
-LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_PATH := $(TARGET_OUT_PRODUCT_ETC)/permissions
 LOCAL_SRC_FILES := $(LOCAL_MODULE)
@@ -16,7 +15,6 @@ LOCAL_SRC_FILES := $(LOCAL_MODULE)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE := FakeStore
 LOCAL_SRC_FILES := FakeStore.apk
 LOCAL_MODULE_CLASS := APPS

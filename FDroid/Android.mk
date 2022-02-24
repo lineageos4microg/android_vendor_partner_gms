@@ -1,6 +1,5 @@
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
-LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE := FDroid
 LOCAL_SRC_FILES := FDroid.apk
 LOCAL_MODULE_CLASS := APPS
