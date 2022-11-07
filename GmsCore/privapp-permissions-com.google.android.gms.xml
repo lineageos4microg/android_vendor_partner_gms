@@ -7,5 +7,6 @@
         <permission name="android.permission.INSTALL_LOCATION_PROVIDER"/>
         <permission name="android.permission.CHANGE_DEVICE_IDLE_TEMP_WHITELIST"/>
         <permission name="android.permission.UPDATE_APP_OPS_STATS"/>
+        <permission name="android.permission.MANAGE_USB"/>
     </privapp-permissions>
 </permissions>
