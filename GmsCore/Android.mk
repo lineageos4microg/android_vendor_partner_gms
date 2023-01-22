@@ -33,7 +33,7 @@ LOCAL_REQUIRED_MODULES := privapp-permissions-com.google.android.gms.xml default
 # these lines will break builds before 19.1 so make them conditional
 ifneq ($(call math_gt_or_eq, $(PLATFORM_SDK_VERSION), 31),)
 LOCAL_USES_LIBRARIES := com.android.location.provider
-LOCAL_OPTIONAL_USES_LIBRARIES := androidx.window.extensions androidx.window.sidecar
+LOCAL_OPTIONAL_USES_LIBRARIES := org.apache.http.legacy androidx.window.extensions androidx.window.sidecar
 endif
 LOCAL_PRODUCT_MODULE := true
 include $(BUILD_PREBUILT)
