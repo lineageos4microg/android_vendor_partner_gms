@@ -26,8 +26,6 @@ The included APKs are:
    * GmsCore: the main component of microG, a FOSS reimplementation of the Google Play Services (requires GsfProxy and FakeStore for full functionality)
    * GsfProxy: a GmsCore proxy for legacy GCM compatibility
    * FakeStore: an empty package that mocks the existence of the Google Play Store
-   * IchnaeaNlpBackend: Network location provider using Mozilla Location Service
-   * NominatimGeocoderBackend: Geocoder backend that uses OSM Nominatim service.
 
 These are official unmodified prebuilt binaries, signed by the
 corresponding developers.
