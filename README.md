@@ -36,6 +36,3 @@ The included APKs are:
 
 These are official unmodified prebuilt binaries, signed by the
 corresponding developers.
-
-## Signature sppofing
-
