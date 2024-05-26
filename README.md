@@ -34,6 +34,7 @@ The symptoms of the problem as some apps from this repo (e.g. FakeStore and GmsC
 
 (Some background to this issue can be found [here](https://github.com/lineageos4microg/android_vendor_partner_gms/issues/30) and [here](https://gitlab.com/iode/os/public/lineage/vendor_extra/-/issues/4))
 
+---------------
 
 The included APKs are:
  * FDroid packages (binaries sourced from [here](https://f-droid.org/packages/org.fdroid.fdroid/) and [here](https://f-droid.org/packages/org.fdroid.fdroid.privileged/))
