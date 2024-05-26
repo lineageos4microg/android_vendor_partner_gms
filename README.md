@@ -21,6 +21,19 @@ Note 2. For the microG packages to work, signature spoofing must be enabled, by 
 - If you are building with [our Docker engine](https://github.com/lineageos4microg/docker-lineage-cicd), this is done automatically according to the values of the `SIGNATURE_SPOOFING` variable - see [here](https://github.com/lineageos4microg/docker-lineage-cicd#signature-spoofing). By default, this variable is set to `restricted`, allowing only system apps (those built-in to the ROM) to 'spoof' the signature of another app. 
 - If you are building manually, you can download and include the patches from [here](https://github.com/lineageos4microg/docker-lineage-cicd/tree/master/src/signature_spoofing_patches). If you follow the [microG patching instructions](https://github.com/microg/GmsCore/wiki/Signature-Spoofing), you ROM will allow _**any**_ app, not only system apps, to spoof app signatures. To apply only 'restricted' signature spoofing, you should do something similar to what the  Docker engine `build.sh` does in [this code](https://github.com/lineageos4microg/docker-lineage-cicd/blob/c77eabe036a1620499a8c087b732e039e0734656/src/build.sh#L229C1-L231C1).
 
+Note 3. If you encounter problems related to APK / app signing when using these components you may need to add the following line in the Android.mk for the component in question:
+```
+LOCAL_REPLACE_PREBUILT_APK_INSTALLED := $(LOCAL_PATH)/$(LOCAL_MODULE).apk
+```
+Such problems can occur when
+
+    the app / APK is resigned with your keys; (this should not happen if the line LOCAL_CERTIFICATE := PRESIGNED is included in the app makefile)
+    app / APK signatures are 'stripped` during the during the deodexing phase of the build. For some apps the deodexed app ends up unsigned, and so will not run.
+
+The symptoms of the problem as some apps from this repo (e.g. FakeStore and GmsCore) missing completely from your launcher and acting like they're not installed.
+
+(Some background to this issue can be found [here](https://github.com/lineageos4microg/android_vendor_partner_gms/issues/30) and [here](https://gitlab.com/iode/os/public/lineage/vendor_extra/-/issues/4))
+
 
 The included APKs are:
  * FDroid packages (binaries sourced from [here](https://f-droid.org/packages/org.fdroid.fdroid/) and [here](https://f-droid.org/packages/org.fdroid.fdroid.privileged/))
