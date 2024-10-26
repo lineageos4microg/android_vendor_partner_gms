@@ -3,9 +3,6 @@ on:
   schedule:
     - cron:  '37 13 * * *'
   workflow_dispatch:
-runs:
-  using: 'node20'
-  main: 'dist/index.js'
 jobs:
   Update-Apks:
     runs-on: ubuntu-latest
