@@ -23,5 +23,10 @@ LOCAL_MODULE_SUFFIX := $(COMMON_ANDROID_PACKAGE_SUFFIX)
 LOCAL_CERTIFICATE := PRESIGNED
 LOCAL_REQUIRED_MODULES := privapp-permissions-com.android.vending.xml default-permissions-com.android.vending.xml
 LOCAL_PRODUCT_MODULE := true
+# this line will break builds before 19.1 so make them conditional
+ifneq ($(call math_gt_or_eq, $(PLATFORM_SDK_VERSION), 31),)
+LOCAL_OPTIONAL_USES_LIBRARIES := androidx.window.extensions androidx.window.sidecar
+endif
+
 include $(BUILD_PREBUILT)
 
