@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <exceptions>
     <exception package="com.google.android.gms">
-        <!-- for permissive signature spoofing, where the permission is "dangerous" -->
-        <permission name="android.permission.FAKE_PACKAGE_SIGNATURE" fixed="false"/>
-    </exception>
+      <permission name="android.permission.ACCESS_COARSE_LOCATION"/>
+      <permission name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+      <permission name="android.permission.ACCESS_FINE_LOCATION"/>
+      <permission name="android.permission.SYSTEM_ALERT_WINDOW"/>
+   </exception>
 </exceptions>
