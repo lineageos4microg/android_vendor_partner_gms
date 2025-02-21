@@ -15,7 +15,7 @@ Example manifest:
 </manifest>
 ```
 
-Note 1. You do not need to set `CUSTOM_PACKAGES` for the packages to be included when building with [our Docker engine](https://github.com/lineageos4microg/docker-lineage-cicd). LineageOS did not make those changes in the 17.1 branch, so to make a 17.1 build, you will need to apply the changes to `AndroidManifest.xml` and `strings.xml` from [the Android Q LOS 17.1 branch-specific patch](https://github.com/lineageos4microg/docker-lineage-cicd/blob/35b7190bda4f2988845f09e028d266a23fd8b559/src/signature_spoofing_patches/android_frameworks_base-Q.patch). You do not need to apply the other changes in that patch.
+Note 1. You do not need to set `CUSTOM_PACKAGES` for the packages to be included when building with [our Docker engine](https://github.com/lineageos4microg/docker-lineage-cicd). LineageOS did not make those changes in the 17.1 branch, so to make a 17.1 build, you will need to apply the changes to `AndroidManifest.xml` and `strings.xml` from [the Android Q LOS 17.1 branch-specific patch](https://github.com/lineageos4microg/docker-lineage-cicd/blob/35b7190bda4f2988845f09e028d266a23fd8b559/src/signature_spoofing_patches/android_frameworks_base-Q.patch). You do not need to apply the other changes in that patch. (See [this issue, and all it's comments](https://github.com/lineageos4microg/android_vendor_partner_gms/issues/42#issuecomment-2674105896) for more information about this)
 
 Note 2. LineageOS now support ***restricted*** signature spoofing, in 18.1 and later branches, so it is no longer neccessary to patch their sources, unless you want ***unrestricted*** signature spoofing
 ~~For the microG packages to work, signature spoofing must be enabled, by patching the LineageOS sources before building.~~
