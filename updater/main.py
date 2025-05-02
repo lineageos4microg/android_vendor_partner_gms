@@ -28,6 +28,9 @@ def update_if_needed(module: str, release: ApkRelease):
             version_code_file.truncate()
             version_code_file.close()
 
+            print('Need to update {} to {}'.format(module, release.version_name)')
+            return
+            
             print('commit and push...')
             git.add_commit_push(module_dir, 'Update {} to {}'.format(module, release.version_name))
 
