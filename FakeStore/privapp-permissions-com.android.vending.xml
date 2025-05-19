@@ -3,5 +3,10 @@
     <privapp-permissions package="com.android.vending">
         <!-- for restrictive signature spoofing, where the permission is "signature|privileged" -->
         <permission name="android.permission.FAKE_PACKAGE_SIGNATURE"/>
+        <permission name="android.permission.REQUEST_INSTALL_PACKAGES" />
+        <permission name="android.permission.DELETE_PACKAGES" />
+        <permission name="android.permission.INSTALL_PACKAGES" />
+        <permission name="android.permission.INTERACT_ACROSS_PROFILES" />
+        <permission name="android.permission.INTERACT_ACROSS_USERS" />
     </privapp-permissions>
 </permissions>
