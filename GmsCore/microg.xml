@@ -23,4 +23,5 @@
     <boolean name="vending_licensing_purchase_free_apps" value="true" />
     <boolean name="vending_billing" value="true" />
     <boolean name="vending_asset_delivery" value="true" />
+    <boolean name="vending_device_sync" value="true" />
 </map>
