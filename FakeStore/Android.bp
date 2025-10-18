@@ -1,0 +1,31 @@
+android_app_import {
+    name: "FakeStore",
+    presigned: true,
+    product_specific: true,
+    privileged: true,
+
+    required: [
+        "privapp-permissions-com.android.vending.xml",
+        "default-permissions-com.android.vending.xml",
+    ],
+
+    optional_uses_libs: [
+        "androidx.window.extensions",
+        "androidx.window.sidecar",
+    ],
+    apk: "FakeStore.apk",
+}
+
+prebuilt_etc {
+    name: "privapp-permissions-com.android.vending.xml",
+    product_specific: true,
+    relative_install_path: "permissions",
+    src: "privapp-permissions-com.android.vending.xml",
+}
+
+prebuilt_etc {
+    name: "default-permissions-com.android.vending.xml",
+    product_specific: true,
+    relative_install_path: "default-permissions",
+    src: "default-permissions-com.android.vending.xml",
+}
