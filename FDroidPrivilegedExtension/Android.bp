@@ -3,7 +3,7 @@ android_app_import {
     presigned: true,
     preprocessed: true,
     product_specific: true,
-    privileged: true,
+    privileged: false,
     required: ["privapp-permissions-org.fdroid.fdroid.privileged.xml"],
     apk: "FDroidPrivilegedExtension.apk",
 }
