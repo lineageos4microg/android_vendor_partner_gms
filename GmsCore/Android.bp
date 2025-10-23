@@ -1,6 +1,7 @@
 android_app_import {
     name: "GmsCore",
     presigned: true,
+    preprocessed: true,
     product_specific: true,
     privileged: true,
     overrides: ["com.qualcomm.location"],
