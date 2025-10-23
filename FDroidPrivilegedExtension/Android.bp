@@ -1,3 +1,4 @@
+/*
 android_app_import {
     name: "FDroidPrivilegedExtension",
     presigned: true,
@@ -14,3 +15,4 @@ prebuilt_etc {
     relative_install_path: "permissions",
     product_specific: true,
 }
+*/
