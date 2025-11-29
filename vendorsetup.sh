@@ -23,6 +23,10 @@ get_files() {
     fi
 }
 
+cd vendor/partner_gms
+
 get_files GmsCore "com.google.android.gms"
 
 get_files FakeStore "com.android.vending"
+
+cd ../..
