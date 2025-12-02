@@ -30,3 +30,5 @@ get_files GmsCore "com.google.android.gms"
 get_files FakeStore "com.android.vending"
 
 cd ../..
+
+set +e
