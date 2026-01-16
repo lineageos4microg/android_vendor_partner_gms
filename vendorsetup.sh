@@ -5,7 +5,7 @@ set -e
 
 echo "vendor/partner_gms/vendorsetup.sh called"
 
-get_files() {
+get_microg_files() {
     local name id src destination_apk
     name="$1"
     id="$2"
@@ -21,11 +21,19 @@ get_files() {
     fi
 }
 
+get_fdroid_files() {
+    src_name="$1"
+    trg_name="$2"
+    curl https://f-droid.org/"$src_name".apk --output "$trg_name"/"$trg_name".apk
+}
+
 cd vendor/partner_gms
 
-get_files GmsCore "com.google.android.gms"
+get_microg_files GmsCore "com.google.android.gms"
+get_microg_files FakeStore "com.android.vending"
 
-get_files FakeStore "com.android.vending"
+get_fdroid_files F-Droid FDroid
+get_fdroid_files repo/org.fdroid.fdroid.privileged_2130 FDroidPrivilegedExtension
 
 cd ../..
 
