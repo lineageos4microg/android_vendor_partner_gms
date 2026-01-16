@@ -6,13 +6,14 @@ set -e
 echo "vendor/partner_gms/vendorsetup.sh called"
 
 get_files() {
-    local name="$1"
-    local id="$2"
-    local versionCode=$(cat "$name"/.version_code)
-    local release=$(cat ".microg_release")
-    local source_apk_name="$id-$versionCode.apk"
-    local src="https://github.com/microg/GmsCore/releases/download/$release/$source_apk_name"
-    local destination_apk="$name/$name.apk"
+    local name id versionCode release source_apk_name src destination_apk
+    name="$1"
+    id="$2"
+    versionCode=$(cat "$name"/.version_code)
+    release=$(cat ".microg_release")
+    source_apk_name="$id-$versionCode.apk"
+    src="https://github.com/microg/GmsCore/releases/download/$release/$source_apk_name"
+    destination_apk="$name/$name.apk"
 
     if [ -f "$destination_apk" ]; then
         echo "$destination_apk exists: not downloading"
