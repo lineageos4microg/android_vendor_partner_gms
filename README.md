@@ -46,7 +46,6 @@ The included APKs are:
  * microG packages (binaries sourced from [here](https://github.com/microg/GmsCore/releases))
    * GmsCore: the main component of microG, a FOSS reimplementation of the Google Play Services (requires FakeStore - and GsfProxy and for older versions - for full functionality)
    * FakeStore: an empty package that mocks the existence of the Google Play Store
-   * GsfProxy: From [here](https://github.com/microg/GsfProxy/releases)a GmsCore proxy for legacy GCM compatibility
  
 These are official unmodified prebuilt binaries, signed by the
 corresponding developers.
