@@ -1,13 +1,6 @@
 # microG Mobile Services
 
 ***Note to maintainers:***
-When updating to a new vesion of microG the following files must be updated
-- `.microg_release`
-- `FakeStore/.version_code`
-- `GmsCore/.version_code`
-)
-
-
 This is a collection of FOSS APKs, coupled with the respective Makefiles for an
 easy integration in the Android build system.
 

@@ -8,10 +8,7 @@ echo "vendor/partner_gms/vendorsetup.sh called"
 get_files() {
     local name="$1"
     local id="$2"
-    local versionCode=$(cat "$name"/.version_code)
-    local release=$(cat ".microg_release")
-    local source_apk_name="$id-$versionCode.apk"
-    local src="https://github.com/microg/GmsCore/releases/download/$release/$source_apk_name"
+    local src=$(curl -sS https://api.github.com/repos/microg/GmsCore/releases/latest | grep -E "/$id-[0-9]+.apk\"" | cut -d"\"" -f4)
     local destination_apk="$name/$name.apk"
 
     if [ -f "$destination_apk" ]; then
@@ -19,7 +16,7 @@ get_files() {
     else
         echo "downloading $destination_apk to $destination_apk"
         curl -LO "$src"
-        mv "$source_apk_name"  "$destination_apk"
+        mv "$id"*  "$destination_apk"
     fi
 }
 
