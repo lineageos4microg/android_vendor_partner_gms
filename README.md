@@ -49,7 +49,7 @@ The included APKs are:
  * FDroid packages (binaries sourced from [here](https://f-droid.org/packages/org.fdroid.fdroid/) and [here](https://f-droid.org/packages/org.fdroid.fdroid.privileged/))
    * FDroid: a catalogue of FOSS (Free and Open Source Software) applications for the Android platform
    * FDroid Privileged Extension: a FDroid extension to ease the installation/removal of apps
-   * additional_repos.xml: a simple package to include the [microG FDroid repository](https://microg.org/fdroid.html) in the ROM (requires FDroid >= 1.5)
+   * additional_repos.xml: a simple package to include the [microG F-Droid repository](https://microg.org/fdroid/repo/) in the ROM (requires FDroid >= 1.5)
  * microG packages (binaries sourced from [here](https://github.com/microg/GmsCore/releases))
    * GmsCore: the main component of microG, a FOSS reimplementation of the Google Play Services (requires FakeStore - and GsfProxy and for older versions - for full functionality)
    * FakeStore: an empty package that mocks the existence of the Google Play Store
