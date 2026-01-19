@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # be strict on failures
-set -e
+set -euo pipefail
 
 echo "vendor/partner_gms/vendorsetup.sh called"
 
@@ -25,4 +25,4 @@ get_microg_files FakeStore "com.android.vending"
 get_fdroid_files F-Droid FDroid
 get_fdroid_files repo/org.fdroid.fdroid.privileged_2130 FDroidPrivilegedExtension
 
-set +e
+set +euo pipefail
