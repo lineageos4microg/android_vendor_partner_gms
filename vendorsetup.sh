@@ -9,14 +9,14 @@ get_microg_files() {
     local name id src
     name="$1"
     id="$2"
-    src=$(curl -sS https://api.github.com/repos/microg/GmsCore/releases/latest | grep -E "/$id-[0-9]+.apk\"" | cut -d"\"" -f4)
-    curl --location "$src" --output "$(dirname ${BASH_SOURCE[0]})"/"$name"/"$name".apk
+    src=$(curl --fail --silent --show-error https://api.github.com/repos/microg/GmsCore/releases/latest | grep -E "/$id-[0-9]+.apk\"" | cut -d"\"" -f4)
+    curl --fail --silent --show-error --location "$src" --output "$(dirname ${BASH_SOURCE[0]})"/"$name"/"$name".apk
 }
 
 get_fdroid_files() {
     src_name="$1"
     trg_name="$2"
-    curl https://f-droid.org/"$src_name".apk --output "$(dirname ${BASH_SOURCE[0]})"/"$trg_name"/"$trg_name".apk
+    curl --fail --silent --show-error https://f-droid.org/"$src_name".apk --output "$(dirname ${BASH_SOURCE[0]})"/"$trg_name"/"$trg_name".apk
 }
 
 get_microg_files GmsCore "com.google.android.gms"
