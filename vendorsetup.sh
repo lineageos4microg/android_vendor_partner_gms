@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # be strict on failures
-set -e
+set -eu
 
 echo "vendor/partner_gms/vendorsetup.sh called"
 
@@ -27,4 +27,4 @@ get_files GmsCore "com.google.android.gms"
 
 get_files FakeStore "com.android.vending"
 
-set +e
+set +eu
