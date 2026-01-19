@@ -19,7 +19,7 @@ get_files() {
         echo "$destination_apk exists: not downloading"
     else
         echo "downloading $destination_apk to $destination_apk"
-        curl -L "$src" --output "$(dirname "${BASH_SOURCE[0]}")"/"$destination_apk".apk
+        curl --fail --silent --show-error --location "$src" --output "$(dirname "${BASH_SOURCE[0]}")"/"$destination_apk".apk
     fi
 }
 
