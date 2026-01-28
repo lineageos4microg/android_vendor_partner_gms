@@ -26,6 +26,15 @@ echo "vendor/partner_gms/vendorsetup.sh called"
 #     fi
 # }
 
+download_apk() {
+    local source_apk=$1
+    local component_name=$2
+    local destination_apk
+
+    destination_apk="$component_name"/"$component_name".apk
+    echo "downloading $source_apk to $destination_apk"
+}
+
 get-fdroid-components() {
     local fdroid_repo="https://mirror.cyberbits.eu/fdroid/repo"
     local name apk_to_download versioncode id
@@ -37,6 +46,7 @@ get-fdroid-components() {
     apk_to_download="$fdroid_repo"/"$id"_"$versioncode".apk
 
     echo "$name apk_to_download: $apk_to_download"
+    download_apk "$apk_to_download" "$name"
 
     # FDroid Privileged Extension
     name="FDroidPrivilegedExtension"
@@ -45,6 +55,7 @@ get-fdroid-components() {
     apk_to_download="$fdroid_repo"/"$id"_"$versioncode".apk
 
     echo "$name apk_to_download: $apk_to_download"
+    download_apk "$apk_to_download" "$name"
 }
 
 get-microg-components() {
@@ -58,6 +69,7 @@ get-microg-components() {
     id="com.google.android.gms"
     apk_to_download="$microg_repo_base"/GMSCore/releases/download/"$microg_release"/"$id"_"$versioncode".apk
     echo "$name apk_to_download: $apk_to_download"
+    download_apk "$apk_to_download" "$name"
 
     # FakeStore
     name="FakeStore"
@@ -65,26 +77,20 @@ get-microg-components() {
     id="com.android.vending"
     apk_to_download="$microg_repo_base"/GMSCore/releases/download/"$microg_release"/"$id"_"$versioncode".apk
     echo "$name apk_to_download: $apk_to_download"
+    download_apk "$apk_to_download" "$name"
 
-    # GsfProxy  the filw we want is
+    # GsfProxy the file we want is
     #`https://github.com/microg/android_packages_apps_GsfProxy/releases/download/v0.1.0/GsfProxy.apk`
     name="GsfProxy"
     versioncode=$(cat "$name"/.version_code)
     apk_to_download="$microg_repo_base"/android_packages_apps_GsfProxy/releases/download/"$versioncode"/"$name".apk
     echo "$name apk_to_download: $apk_to_download"
-
-
+    download_apk "$apk_to_download" "$name"
 }
 
 # cd vendor/partner_gms
 get-fdroid-components
-
 get-microg-components
-
-# get_files GmsCore "com.google.android.gms"
-
-# get_files FakeStore "com.android.vending"
-
 cd ../..
 
 set +e
