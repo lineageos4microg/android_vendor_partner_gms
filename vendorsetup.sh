@@ -47,22 +47,39 @@ get-fdroid-components() {
     echo "$name apk_to_download: $apk_to_download"
 }
 
-# get-microg-components() {
-#     local microg_repo_base="https://github.com/microg"
-#     local name apk_to_download versioncode
+get-microg-components() {
+    local microg_repo_base="https://github.com/microg"
+    local name apk_to_download versioncode id
+    microg_release=$(cat ".microg_release")
 
-#     # GmsCore
-#     name="GmsCore"
-#     apk_to_download="$microg_repo_base/GMSCore/org.fdroid.fdroid.privileged_$versioncode.apk"
-#     #
-#     # FakeStore
-#     # GsfProxy
+    # GmsCore
+    name="GmsCore"
+    versioncode=$(cat "$name"/.version_code)
+    id="com.google.android.gms"
+    apk_to_download="$microg_repo_base"/GMSCore/releases/download/"$microg_release"/"$id"_"$versioncode".apk
+    echo "$name apk_to_download: $apk_to_download"
+
+    # FakeStore
+    name="FakeStore"
+    versioncode=$(cat "$name"/.version_code)
+    id="com.android.vending"
+    apk_to_download="$microg_repo_base"/GMSCore/releases/download/"$microg_release"/"$id"_"$versioncode".apk
+    echo "$name apk_to_download: $apk_to_download"
+
+    # GsfProxy  the filw we want is
+    #`https://github.com/microg/android_packages_apps_GsfProxy/releases/download/v0.1.0/GsfProxy.apk`
+    name="GsfProxy"
+    versioncode=$(cat "$name"/.version_code)
+    apk_to_download="$microg_repo_base"/android_packages_apps_GsfProxy/releases/download/"$versioncode"/"$name".apk
+    echo "$name apk_to_download: $apk_to_download"
 
 
-# }
+}
 
 # cd vendor/partner_gms
 get-fdroid-components
+
+get-microg-components
 
 # get_files GmsCore "com.google.android.gms"
 
