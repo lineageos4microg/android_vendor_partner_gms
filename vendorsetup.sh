@@ -33,6 +33,7 @@ download_apk() {
 
     destination_apk="$component_name"/"$component_name".apk
     echo "downloading $source_apk to $destination_apk"
+    curl -L --output "$destination_apk" "$source_apk"
 }
 
 get-fdroid-components() {
