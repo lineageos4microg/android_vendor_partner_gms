@@ -17,7 +17,7 @@ download_apk() {
         # Deal with the situation where we have an OLDER version hanging around
         # may have to be handled in the Docker image
     else
-        echo "downloading $source_apk to $destination_apk"
+        # echo "downloading $source_apk to $destination_apk"
         curl -L --output "$destination_apk" "$source_apk"
     fi
 }
@@ -32,7 +32,7 @@ get-fdroid-components() {
     id="org.fdroid.fdroid"
     apk_to_download="$fdroid_repo"/"$id"_"$versioncode".apk
 
-    echo "$name apk_to_download: $apk_to_download"
+    # echo "$name apk_to_download: $apk_to_download"
     download_apk "$apk_to_download" "$name"
 
     # FDroid Privileged Extension
@@ -41,7 +41,7 @@ get-fdroid-components() {
     id="org.fdroid.fdroid.privileged"
     apk_to_download="$fdroid_repo"/"$id"_"$versioncode".apk
 
-    echo "$name apk_to_download: $apk_to_download"
+    # echo "$name apk_to_download: $apk_to_download"
     download_apk "$apk_to_download" "$name"
 }
 
@@ -55,7 +55,7 @@ get-microg-components() {
     versioncode=$(cat "$name"/.version_code)
     id="com.google.android.gms"
     apk_to_download="$microg_repo_base"/GMSCore/releases/download/"$microg_release"/"$id"-"$versioncode".apk
-    echo "$name apk_to_download: $apk_to_download"
+    # echo "$name apk_to_download: $apk_to_download"
     download_apk "$apk_to_download" "$name"
 
     # FakeStore
@@ -63,7 +63,7 @@ get-microg-components() {
     versioncode=$(cat "$name"/.version_code)
     id="com.android.vending"
     apk_to_download="$microg_repo_base"/GMSCore/releases/download/"$microg_release"/"$id"-"$versioncode".apk
-    echo "$name apk_to_download: $apk_to_download"
+    # echo "$name apk_to_download: $apk_to_download"
     download_apk "$apk_to_download" "$name"
 
     # GsfProxy the file we want is
@@ -71,7 +71,7 @@ get-microg-components() {
     name="GsfProxy"
     versioncode=$(cat "$name"/.version_code)
     apk_to_download="$microg_repo_base"/android_packages_apps_GsfProxy/releases/download/"$versioncode"/"$name".apk
-    echo "$name apk_to_download: $apk_to_download"
+    # echo "$name apk_to_download: $apk_to_download"
     download_apk "$apk_to_download" "$name"
 }
 
