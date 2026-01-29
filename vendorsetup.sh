@@ -75,9 +75,11 @@ get-microg-components() {
     download_apk "$apk_to_download" "$name"
 }
 
-# cd vendor/partner_gms
+# This script is called from the root dierctory, so we need to cd
+cd vendor/partner_gms
 get-fdroid-components
 get-microg-components
+# and back to the root directory
 cd ../..
 
 set +e
