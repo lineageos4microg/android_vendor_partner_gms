@@ -5,35 +5,21 @@ set -e
 
 echo "vendor/partner_gms/vendorsetup.sh called"
 
-# get_files() {
-#     local name="$1"
-#     local id="$2"
-#     local versionCode=$(cat "$name"/.version_code)
-#     local release=$(cat ".microg_release")
-#     local source_apk_name="$id-$versionCode.apk"
-#     local src="https://github.com/microg/GmsCore/releases/download/$release/$source_apk_name"
-#     local destination_apk="$name/$name.apk"
-
-#     if [ -f "$destination_apk" ]; then
-#         echo "$destination_apk exists: not downloading"
-#     ## To Do
-#     # Deal with the situation where we have an OLDER version hanging around
-#     # may have to be handled in the Docker image
-#     else
-#         echo "downloading $destination_apk to $destination_apk"
-#         curl -LO "$src"
-#         mv "$source_apk_name"  "$destination_apk"
-#     fi
-# }
-
 download_apk() {
     local source_apk=$1
     local component_name=$2
     local destination_apk
 
     destination_apk="$component_name"/"$component_name".apk
-    echo "downloading $source_apk to $destination_apk"
-    curl -L --output "$destination_apk" "$source_apk"
+    if [ -f "$destination_apk" ]; then
+        echo "$destination_apk exists: not downloading"
+        ## To Do
+        # Deal with the situation where we have an OLDER version hanging around
+        # may have to be handled in the Docker image
+    else
+        echo "downloading $source_apk to $destination_apk"
+        curl -L --output "$destination_apk" "$source_apk"
+    fi
 }
 
 get-fdroid-components() {
