@@ -36,7 +36,7 @@ download_apk() {
 }
 
 get-fdroid-components() {
-    local fdroid_repo="https://mirror.cyberbits.eu/fdroid/repo"
+    local fdroid_repo="https://f-droid.org/repo/"
     local name apk_to_download versioncode id
 
     # F-Droid client app
