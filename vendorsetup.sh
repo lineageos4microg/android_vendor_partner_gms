@@ -67,7 +67,7 @@ get-microg-components() {
     name="GmsCore"
     versioncode=$(cat "$name"/.version_code)
     id="com.google.android.gms"
-    apk_to_download="$microg_repo_base"/GMSCore/releases/download/"$microg_release"/"$id"_"$versioncode".apk
+    apk_to_download="$microg_repo_base"/GMSCore/releases/download/"$microg_release"/"$id"-"$versioncode".apk
     echo "$name apk_to_download: $apk_to_download"
     download_apk "$apk_to_download" "$name"
 
@@ -75,7 +75,7 @@ get-microg-components() {
     name="FakeStore"
     versioncode=$(cat "$name"/.version_code)
     id="com.android.vending"
-    apk_to_download="$microg_repo_base"/GMSCore/releases/download/"$microg_release"/"$id"_"$versioncode".apk
+    apk_to_download="$microg_repo_base"/GMSCore/releases/download/"$microg_release"/"$id"-"$versioncode".apk
     echo "$name apk_to_download: $apk_to_download"
     download_apk "$apk_to_download" "$name"
 
