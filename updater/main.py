@@ -46,4 +46,4 @@ update_if_needed('FakeStore', fdroid_recommended_release(fdroid_microg_repo, 'co
 update_if_needed('FDroid', fdroid_recommended_release(fdroid_main_repo, 'org.fdroid.fdroid'))
 update_if_needed('FDroidPrivilegedExtension', fdroid_recommended_release(fdroid_main_repo, 'org.fdroid.fdroid.privileged'))
 update_if_needed('GmsCore', fdroid_recommended_release(fdroid_microg_repo, 'com.google.android.gms'))
-update_if_needed('GsfProxy', fdroid_recommended_release(fdroid_microg_repo, 'com.google.android.gsf'))
+#update_if_needed('GsfProxy', fdroid_recommended_release(fdroid_microg_repo, 'com.google.android.gsf'))
