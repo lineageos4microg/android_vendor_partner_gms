@@ -2,12 +2,21 @@ import urllib.request
 from os import path
 
 import certificates
+import subprocess
 import git
 from sources import ApkRelease, fdroid_recommended_release
 
 def create_update_issue(component: str, new_release: ApkRelease):
     print('Need to update {} to {}'.format(component, new_release.version_name))
     print('version_code {}'.format(new_release.version_code))
+
+    # Now we'll call the github-cli function
+    issue_title = 'Update {} to version {}'.format(component, new_release.version_name)
+    issue_body = 'New version code is {}'.format(new_release.version_code)
+    command = 'ghi open -m {} \n{}'.format(issue_title, issue_body)
+    print('command: {}'.format(command))
+
+
 
 def update_if_needed(module: str, release: ApkRelease):
     module_dir = path.abspath(path.join(path.dirname(__file__), '..', module))
