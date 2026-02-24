@@ -13,6 +13,7 @@ jobs:
           distribution: "temurin"
           java-version: "17"
       - run: pipx install pipenv
+      - run: pipx install github-cli
       - uses: actions/setup-python@v4
         with:
           python-version: "3.9"
