@@ -5,7 +5,9 @@ import certificates
 import subprocess
 import git
 from sources import ApkRelease, fdroid_recommended_release
-from github-cli import ghi
+from ghapi.all import GhApi
+
+api = GhApi()
 
 def create_update_issue(component: str, new_release: ApkRelease):
     print('Need to update {} to {}'.format(component, new_release.version_name))
@@ -14,7 +16,8 @@ def create_update_issue(component: str, new_release: ApkRelease):
     # Now we'll call the github-cli function
     issue_title = 'Update {} to version {}'.format(component, new_release.version_name)
     issue_body = 'New version code is {}'.format(new_release.version_code)
-    command = 'ghi open -m {} \n{}'.format(issue_title, issue_body)
+    # command = 'ghi open -m {} \n{}'.format(issue_title, issue_body)
+    command = 'api.issue.create -t {} -b {}'.format(issue_title, issue_body)
     print('command: {}'.format(command))
 
     try:
