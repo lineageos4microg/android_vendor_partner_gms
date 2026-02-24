@@ -4,9 +4,8 @@ from os import path
 import certificates
 import subprocess
 import git
-import github-cli
 from sources import ApkRelease, fdroid_recommended_release
-
+from github-cli import ghi
 
 def create_update_issue(component: str, new_release: ApkRelease):
     print('Need to update {} to {}'.format(component, new_release.version_name))
