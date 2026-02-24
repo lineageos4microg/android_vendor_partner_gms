@@ -5,9 +5,6 @@ import certificates
 import subprocess
 import git
 from sources import ApkRelease, fdroid_recommended_release
-from ghapi.all import GhApi
-
-api = GhApi()
 
 def create_update_issue(component: str, new_release: ApkRelease):
     print('Need to update {} to {}'.format(component, new_release.version_name))
@@ -17,12 +14,13 @@ def create_update_issue(component: str, new_release: ApkRelease):
     issue_title = 'Update {} to version {}'.format(component, new_release.version_name)
     issue_body = 'New version code is {}'.format(new_release.version_code)
     # command = 'ghi open -m {} \n{}'.format(issue_title, issue_body)
-    command = 'api.issue.create -t {} -b {}'.format(issue_title, issue_body)
-    print('command: {}'.format(command))
+    # command = 'gh issue create -t {} -b {}'.format(issue_title, issue_body)
+    # print('command: {}'.format(command))
 
     try:
         # Run the command and capture output
-        result = subprocess.run(command, capture_output=True, text=True, check=True)
+        result = subprocess.run(['gh', 'issue', 'create', '--title', issue_title, '--body', issue_body], capture_output=True, text=True, check=True)
+        # result = subprocess.run(command, capture_output=True, text=True, check=True)
         print("Command output:", result.stdout)
         return result.stdout
     except subprocess.CalledProcessError as e:
