@@ -1,24 +1,31 @@
 #!/bin/bash
 
-# be strict on failures
-set -e
-
 echo "vendor/partner_gms/vendorsetup.sh called"
 
 download_apk() {
     local source_apk=$1
     local component_name=$2
+    local checksum_file
     local destination_apk
+    local skip=0
 
     destination_apk="$component_name"/"$component_name".apk
+    checksum_file="$component_name"/.sha256sum
+
     if [ -f "$destination_apk" ]; then
-        echo "$destination_apk exists: not downloading"
-        ## To Do
-        # Deal with the situation where we have an OLDER version hanging around
-        # may have to be handled in the Docker image
-    else
+        echo "$destination_apk exists: verifying checksum"
+	if sha256sum --check "$checksum_file"; then
+            skip=1
+	else
+	    echo "$destination_apk: invalid signature, retrying download"
+	fi
+    fi
+
+    if [ "$skip" = 0 ]; then
         # echo "downloading $source_apk to $destination_apk"
-        curl -L --output "$destination_apk" "$source_apk"
+        curl -L --output "$destination_apk" "$source_apk" || exit 1
+        echo "$destination_apk downloaded: verifying checksum"
+	sha256sum --check "$checksum_file" || exit 1
     fi
 }
 
@@ -76,10 +83,9 @@ get-microg-components() {
 }
 
 # This script is called from the root dierctory, so we need to cd
-cd vendor/partner_gms
+callingdir="$(pwd)"
+cd vendor/partner_gms || exit 1
 get-fdroid-components
 get-microg-components
 # and back to the root directory
-cd ../..
-
-set +e
+cd "$callingdir"
