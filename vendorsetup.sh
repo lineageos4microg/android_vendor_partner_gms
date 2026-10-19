@@ -65,7 +65,7 @@ download_apk() {
         # echo "downloading $source_apk to $destination_apk"
         curl -L --output "$destination_apk" "$source_apk"
     fi
-    apksigner verify --print-certs "$destination_apk" 2>&1 | grep "$signer"
+    verify_apk_signer "$destination_apk" "$signer" "$component_name"
 }
 
 get-fdroid-components() {
