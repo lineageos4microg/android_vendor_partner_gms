@@ -5,8 +5,49 @@ set -e
 
 echo "vendor/partner_gms/vendorsetup.sh called"
 
+# F-Droid's APK signing certificate fingerprint, published at
+#   https://f-droid.org/docs/Release_Channels_and_Signing_Keys/
+# (owner: CN=Ciaran Gultnieks). Reproducible as the SHA-256 of the DER
+# certificate in the 'pubkey' attribute of https://f-droid.org/repo/index.xml
 FDROID_SIGNER=43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab
+
+# microG's APK signing certificate fingerprint. Reproducible as the SHA-256 of
+# the DER certificate in the 'pubkey' attribute of
+#   https://microg.org/fdroid/repo/index.xml
+# which is the same repo this project pre-seeds via additional_repos.xml.
 MICROG_SIGNER=9bd06727e62796c0130eb6dab39b73157451582cbd138e86c468acc395d14165
+
+# The tree ships apksigner, but the wrapper at
+# prebuilts/sdk/tools/linux/bin/apksigner looks for its jar in $progdir,
+# $progdir/lib and ../framework, while the jar is at
+# prebuilts/sdk/tools/linux/lib/apksigner.jar, so it exits 1 with
+# "can't find apksigner.jar". Invoke the jar directly instead.
+# Resolve to an absolute path now, because this script later does
+# 'cd vendor/partner_gms' before any download happens. envsetup.sh sources
+# this file without cd-ing to the tree root, so prefer gettop over pwd.
+APKSIGNER_TOP=$(gettop 2>/dev/null || pwd)
+APKSIGNER_JAR=$APKSIGNER_TOP/prebuilts/sdk/tools/linux/lib/apksigner.jar
+
+verify_apk_signer() {
+    local apk=$1 expected=$2 name=$3 digest
+
+    if [ ! -r "$APKSIGNER_JAR" ]; then
+        echo "ERROR: $APKSIGNER_JAR not found; cannot verify $name" >&2
+        return 1
+    fi
+
+    digest=$(java -jar "$APKSIGNER_JAR" verify --print-certs "$apk" 2>/dev/null \
+             | sed -n 's/^Signer #1 certificate SHA-256 digest: //p')
+
+    if [ "$digest" != "$expected" ]; then
+        echo "ERROR: signature mismatch for $name" >&2
+        echo "  expected: $expected" >&2
+        echo "  got:      ${digest:-<none, unsigned or tampered>}" >&2
+        return 1
+    fi
+
+    echo "verified signature for $name"
+}
 
 download_apk() {
     local source_apk=$1
