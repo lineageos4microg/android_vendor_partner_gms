@@ -57,3 +57,6 @@ The included APKs are:
  
 These are official unmodified prebuilt binaries, signed by the
 corresponding developers.
+
+### Contributing
+See the ['Contributing` page of the project wiki](https://github.com/lineageos4microg/l4m-wiki/wiki/Contributing#contributing) for information about how to contribute to the project
