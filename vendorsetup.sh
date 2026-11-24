@@ -27,6 +27,10 @@ MICROG_SIGNER=9bd06727e62796c0130eb6dab39b73157451582cbd138e86c468acc395d14165
 # this file without cd-ing to the tree root, so prefer gettop over pwd.
 APKSIGNER_TOP=$(gettop 2>/dev/null || pwd)
 APKSIGNER_JAR=$APKSIGNER_TOP/prebuilts/sdk/tools/linux/lib/apksigner.jar
+# Android 11's apksigner.jar is class file 53, so it needs Java 9 or newer, and
+# the container's own java is 8. Trees that ship a class 52 jar work with either.
+APKSIGNER_JAVA=$APKSIGNER_TOP/prebuilts/jdk/jdk11/linux-x86/bin/java
+[ -x "$APKSIGNER_JAVA" ] || APKSIGNER_JAVA=java
 
 verify_apk_signer() {
     local apk=$1 expected=$2 name=$3 digest
@@ -36,7 +40,7 @@ verify_apk_signer() {
         return 1
     fi
 
-    digest=$(java -jar "$APKSIGNER_JAR" verify --print-certs "$apk" 2>/dev/null \
+    digest=$("$APKSIGNER_JAVA" -jar "$APKSIGNER_JAR" verify --print-certs "$apk" 2>/dev/null \
              | sed -n 's/^Signer #1 certificate SHA-256 digest: //p')
 
     if [ "$digest" != "$expected" ]; then
